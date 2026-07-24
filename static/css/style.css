@@ -1,0 +1,387 @@
+/* Reset browser defaults so every browser starts from the same baseline */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #22252B;
+    background-color: #FAF7F0;
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(255, 210, 63, 0.35) 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(27, 42, 74, 0.20) 0%, transparent 45%),
+        radial-gradient(circle at 75% 85%, rgba(255, 107, 107, 0.22) 0%, transparent 40%),
+        radial-gradient(circle at 10% 90%, rgba(107, 158, 120, 0.22) 0%, transparent 40%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Navigation bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 60px;
+}
+
+.logo {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1B2A4A;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #22252B;
+    font-weight: 500;
+}
+
+.nav-cta {
+    text-decoration: none;
+    background-color: #1B2A4A;
+    color: #FAF7F0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Hero section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+    min-height: 70vh;
+}
+
+.hero-text {
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #1B2A4A;
+    margin-bottom: 24px;
+}
+
+.highlight {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #8a6d00;
+    position: relative;
+}
+
+.highlight::after {
+    content: "";
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    bottom: 6px;
+    height: 16px;
+    background-color: #FFD23F;
+    opacity: 0.6;
+    z-index: -1;
+    transform: rotate(-1deg);
+}
+
+.hero-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #4a4d55;
+    margin-bottom: 32px;
+}
+
+.stamp-cta {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1B2A4A;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    border: 2px solid #FFD23F;
+    transform: rotate(-1deg);
+}
+/* Modal overlay - covers the whole screen */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 42, 74, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    background-color: #FAF7F0;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-box h2 {
+    font-family: 'Fraunces', serif;
+    color: #1B2A4A;
+    margin-bottom: 16px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #1B2A4A;
+    cursor: pointer;
+    line-height: 1;
+}
+.dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.dashboard h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    color: #1B2A4A;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* Score card */
+.score-card {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.score-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: white;
+}
+
+.score-good { background-color: #6B9E78; }
+.score-okay { background-color: #FFD23F; color: #1B2A4A; }
+.score-low { background-color: #FF6B6B; }
+
+/* Grid layout for cards */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(27, 42, 74, 0.08);
+}
+
+.card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: #1B2A4A;
+    margin-bottom: 16px;
+}
+
+.card p {
+    margin-bottom: 8px;
+    color: #4a4d55;
+}
+
+/* Skill tags */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.tag-found {
+    background-color: rgba(107, 158, 120, 0.15);
+    color: #4a7a56;
+}
+
+.tag-missing {
+    background-color: rgba(255, 107, 107, 0.12);
+    color: #c94f4f;
+    border: 1px dashed #FF6B6B;
+}
+.dashboard {
+    background: linear-gradient(135deg, #FAF7F0 0%, #EFEAE0 100%);
+    /* rest of your existing .dashboard rules stay the same */
+}
+.section-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    color: #1B2A4A;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.features, .how-it-works {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.features .card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: #1B2A4A;
+    margin-bottom: 10px;
+}
+
+.features .card p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* How it works - horizontal steps */
+.steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 220px;
+    text-align: center;
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    background-color: #1B2A4A;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 auto 16px;
+}
+
+.step h3 {
+    font-family: 'Fraunces', serif;
+    color: #1B2A4A;
+    margin-bottom: 8px;
+}
+
+.step p {
+    font-size: 15px;
+    color: #4a4d55;
+}
+.back-link-wrapper {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 24px;
+}
+
+.back-link {
+    display: inline-block;
+    background-color: #1B2A4A;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s;
+}
+
+.back-link:hover {
+    background-color: #2a3f6b;
+}
+.loading-message {
+    display: none;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #1B2A4A;
+    text-align: center;
+    font-weight: 500;
+}
+.loading-message.active {
+    display: block;
+}
+.score-label {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1B2A4A;
+    margin-bottom: 4px;
+}
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+}
+
+.suggestions-list li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    font-size: 14px;
+    color: #4a4d55;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(27, 42, 74, 0.08);
+}
+
+.suggestions-list li:last-child {
+    border-bottom: none;
+}
+
+.suggestions-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #FF6B6B;
+    font-weight: 600;
+}

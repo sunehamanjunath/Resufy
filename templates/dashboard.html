@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resufy — Your Results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">Resufy</a>
+    </nav>
+
+    <div class="dashboard">
+        <h1>Your Resume Results</h1>
+       
+
+        <div class="score-card">
+            <div class="score-circle {% if data.ats_score >= 80 %}score-good{% elif data.ats_score >= 60 %}score-okay{% else %}score-low{% endif %}">
+                {{ data.ats_score }}
+            </div>
+            <p class="score-label">{{ data.score_label }}</p>
+            <p>ATS Score out of 100</p>
+        </div>
+
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h2>Contact Info</h2>
+                <p><strong>Name:</strong> {{ data.name }}</p>
+                <p><strong>Email:</strong> {{ data.email }}</p>
+                <p><strong>Phone:</strong> {{ data.phone }}</p>
+            </div>
+
+            <div class="card">
+                <h2>Skills Found</h2>
+                <div class="tag-list">
+                    {% for skill in data.skills %}
+                        <span class="tag tag-found">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Consider Adding</h2>
+                <div class="tag-list">
+                    {% for skill in data.missing_skills %}
+                        <span class="tag tag-missing">{{ skill }}</span>
+                    {% endfor %}
+                    {% if not data.missing_skills %}
+                        <p>You've covered all our core skills. Nice work!</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card">
+                 <h2>Suggestions</h2>
+                 <ul class="suggestions-list">
+                {% for suggestion in data.suggestions %}
+                    <li>{{ suggestion }}</li>
+                {% endfor %}
+                 </ul>
+            </div>
+    </div>
+
+        </div>
+         <div class="back-link-wrapper">
+            <button class="back-link" id="openModal">← Analyze Another Resume</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="uploadModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Upload Your Resume</h2>
+            <p>We accept PDF and DOCX files.</p>
+
+            <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">
+                <input type="file" name="resume" accept=".pdf,.docx" required>
+                <button type="submit" class="stamp-cta">Upload & Analyze</button>
+                <p id="loadingMessage" class="loading-message"> Analyzing your resume...</p>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
