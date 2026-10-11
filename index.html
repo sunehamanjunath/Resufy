@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resufy — Get Your Resume Noticed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Resufy</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it Works</a></li>
+        </ul>
+        <button class="nav-cta" id="openModalNav">Get Started</button>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Get your resume <span class="highlight">noticed</span></h1>
+            <p>Upload your resume and get instant feedback on your ATS score, missing skills, and formatting.</p>
+            <button class="stamp-cta" id="openModal">Analyze My Resume</button>
+        </div>
+        <div class="hero-visual">
+            <!-- document/scan illustration goes here later -->
+        </div>
+    </header>
+    <section class="features" id="features">
+        <h2 class="section-heading">Everything your resume needs</h2>
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>ATS Score</h3>
+                <p>Get an instant score showing how well your resume would perform against real applicant tracking systems.</p>
+            </div>
+            <div class="card">
+                <h3>Skill Detection</h3>
+                <p>We scan your resume and highlight the technical skills we found, clearly and instantly.</p>
+            </div>
+            <div class="card">
+                <h3>Gap Analysis</h3>
+                <p>See which commonly expected skills might be missing, so you know exactly what to add.</p>
+            </div>
+            <div class="card">
+                <h3>PDF & DOCX Support</h3>
+                <p>Upload your resume in whichever format you already have it in — no converting required.</p>
+            </div>
+            <div class="card">
+                <h3>Actionable Suggestions</h3>
+                <p>Receive specific, actionable advice on how to improve your resume and increase your chances of getting noticed.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-heading">How it works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Upload</h3>
+                <p>Drop in your resume as a PDF or DOCX file.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Analyze</h3>
+                <p>We extract and scan your resume's content automatically.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Improve</h3>
+                <p>Get your score and a clear list of what to work on.</p>
+            </div>
+        </div>
+    </section>
+   <div class="modal-overlay" id="uploadModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Upload Your Resume</h2>
+            <p>We accept PDF and DOCX files.</p>
+
+            <form action="/upload" method="POST" enctype="multipart/form-data" id="uploadForm">
+                <input type="file" name="resume" accept=".pdf,.docx" required>
+                <button type="submit" class="stamp-cta">Upload & Analyze</button>
+                <p id="loadingMessage" class="loading-message"> Analyzing your resume...</p>
+            </form>
+        </div>
+    </div>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>
